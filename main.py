@@ -42,6 +42,12 @@ while running:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
     playerX += playerX_change
+    # adding game boundaries
+    if playerX <= 0:
+        playerX = 0
+    if playerX >= 736:
+        playerX = 736
+
     player(playerX, playerY)
     pygame.display.update()
 
