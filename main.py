@@ -7,6 +7,9 @@ pygame.init()
 # create the screen
 screen = pygame.display.set_mode((800, 600))
 
+# Background
+background = pygame.image.load("images/abstract-space-background-with-nebula-stars.jpg")
+
 # Title and Logo
 pygame.display.set_caption("Space Invader")
 icon = pygame.image.load("images/ufo.png")
@@ -40,6 +43,7 @@ running = True
 while running:
     # Color of the Screen
     screen.fill((0, 0, 0))
+    screen.blit(background,(0,0))
     # CLose the window
     for event in pygame.event.get():
         if pygame.QUIT == event.type:
