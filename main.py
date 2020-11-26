@@ -1,5 +1,6 @@
 import pygame
 import random
+
 # initialise
 pygame.init()
 
@@ -24,9 +25,10 @@ def player(x, y):
 
 # Enemy
 enemyImg = pygame.image.load("images/flying.png")
-enemyX = random.randint(0,736)
-enemyY = random.randint(50,150)
-enemyX_change = 0
+enemyX = random.randint(0, 736)
+enemyY = random.randint(50, 150)
+enemyX_change = 0.3
+enemyY_change = 20
 
 
 def enemy(x, y):
@@ -45,20 +47,29 @@ while running:
         # Check if keystroke is pressed
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -0.2
+                playerX_change = -0.3
             if event.key == pygame.K_RIGHT:
-                playerX_change = 0.2
+                playerX_change = 0.3
         # Check for key release
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
+
     playerX += playerX_change
-    # adding game boundaries
+    # adding player boundaries
     if playerX <= 0:
         playerX = 0
     if playerX >= 736:
         playerX = 736
 
+    enemyX += enemyX_change
+    # adding enemy boundaries
+    if enemyX <= 0:
+        enemyX_change = 0.3
+        enemyY += enemyY_change
+    if enemyX >= 736:
+        enemyX_change = -0.3
+        enemyY += enemyY_change
     player(playerX, playerY)
     enemy(enemyX, enemyY)
     pygame.display.update()
