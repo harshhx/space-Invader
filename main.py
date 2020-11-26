@@ -1,5 +1,5 @@
 import pygame
-
+import random
 # initialise
 pygame.init()
 
@@ -20,6 +20,17 @@ playerX_change = 0
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
+
+
+# Enemy
+enemyImg = pygame.image.load("flying.png")
+enemyX = random.randint(0,736)
+enemyY = random.randint(50,150)
+enemyX_change = 0
+
+
+def enemy(x, y):
+    screen.blit(enemyImg, (x, y))
 
 
 # Game Loop
@@ -49,6 +60,7 @@ while running:
         playerX = 736
 
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     pygame.display.update()
 
 # Images source flaticon.com
